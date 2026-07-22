@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1c6f5b" />
+    <title>Daylight · Daily routine tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="daily.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Daylight home">
+          <span class="brand-mark">☼</span>
+          <span>daylight</span>
+        </a>
+        <div class="header-actions">
+          <button class="icon-button" id="notificationButton" type="button" aria-label="Enable notifications" title="Enable notifications">♧</button>
+          <button class="avatar" type="button" aria-label="Your profile">A</button>
+        </div>
+      </header>
+
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow" id="todayLabel">YOUR DAILY RHYTHM</p>
+        <h1 id="page-title">Make today feel <em>intentional.</em></h1>
+        <p class="hero-copy">Set gentle reminders for the moments that make your day yours.</p>
+      </section>
+
+      <section class="overview" aria-label="Today overview">
+        <div class="date-control">
+          <label for="routineDate">Your plan for</label>
+          <div class="date-input-wrap">
+            <input id="routineDate" type="date" aria-label="Select routine date" />
+          </div>
+        </div>
+        <div class="progress-block">
+          <div class="progress-label"><span>Daily progress</span><strong id="progressText">0 of 7 complete</strong></div>
+          <div class="progress-track"><span id="progressBar"></span></div>
+        </div>
+      </section>
+
+      <section class="routine-section" aria-labelledby="routine-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">SCHEDULE</p>
+            <h2 id="routine-heading">Your routine</h2>
+          </div>
+          <button class="text-button" id="resetButton" type="button">Reset day</button>
+        </div>
+
+        <div class="routine-list" id="routineList" aria-live="polite"></div>
+
+        <button class="add-activity" id="addActivityButton" type="button"><span>+</span> Add activity</button>
+      </section>
+
+      <section class="insight-card" id="insightCard">
+        <span class="insight-icon">✦</span>
+        <p><strong>Start small.</strong> Your alarm will play when a scheduled routine is due, as long as this page is open.</p>
+      </section>
+    </main>
+
+    <dialog id="activityDialog">
+      <form method="dialog" class="dialog-card" id="activityForm">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">CUSTOM ROUTINE</p>
+            <h2>Add an activity</h2>
+          </div>
+          <button class="close-button" value="cancel" aria-label="Close">×</button>
+        </div>
+        <label>Activity name<input id="activityName" maxlength="32" required placeholder="e.g. Read a book" /></label>
+        <label>Time<input id="activityTime" type="time" required /></label>
+        <label class="color-label">Color
+          <span class="color-options">
+            <input type="radio" name="activityColor" value="sun" checked aria-label="Sun yellow" />
+            <input type="radio" name="activityColor" value="sky" aria-label="Sky blue" />
+            <input type="radio" name="activityColor" value="rose" aria-label="Rose pink" />
+            <input type="radio" name="activityColor" value="violet" aria-label="Violet" />
+          </span>
+        </label>
+        <button class="save-button" value="default" type="submit">Add to routine</button>
+      </form>
+    </dialog>
+
+    <dialog id="alarmDialog">
+      <div class="alarm-card">
+        <span class="alarm-sun">☼</span>
+        <p class="eyebrow">TIME FOR YOUR ROUTINE</p>
+        <h2 id="alarmTitle">Good morning!</h2>
+        <p id="alarmMessage">Your activity is ready when you are.</p>
+        <button class="save-button" id="dismissAlarm" type="button">I'm on it</button>
+      </div>
+    </dialog>
+    
+    <script src="daily.js"></script>
+  </body>
+</html>
+
